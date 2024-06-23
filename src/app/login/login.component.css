@@ -1,0 +1,86 @@
+ /* login-form.component.css  */
+
+ .page-container {
+    display: block;
+    flex-direction: column;
+    align-items: center;
+    align-content: center;
+    justify-content: center;
+    margin: auto;
+    width: 80%; /* Largura desejada do container */
+    max-width: 600px; /* Largura máxima do container (opcional) */
+    padding: 20px; /* Espaçamento interno do container */
+    background-color: #dcdcdc; /* Cor de fundo do container (opcional) */
+    border: 1px solid #ccc; /* Borda do container (opcional) */
+    margin-top: 40px;
+    box-shadow: 10px 10px 40px rgba(0, 0, 0, 0.4);
+}
+
+h3.validate {
+  font-size: 24px;
+  font-weight: bold;
+  color: #0046ad;
+  text-transform: uppercase;
+  padding: 10px 20px;
+  border: 2px solid #0046ad;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  margin: auto;
+  width: 55%;
+  text-align: center;
+}
+.login-container {
+    display: block;
+    width: 100%;
+    margin: auto;
+    text-align: -webkit-center;
+    font-family: Roboto, sans-serif;
+
+  }
+  
+  .input-field {
+    width: 60%;
+    margin: 20px; /* Espaço entre os campos */
+    display: block;
+
+  }
+   .submit{
+    background-color:#f28500 ;
+    color: #fff;
+    font-size: 15px;
+    font-weight: 400;
+    border: none !important;
+    transition: all linear 160ms;
+    cursor: pointer;
+    margin: 0 !important;
+    padding: 10px 20px; /* Espaçamento interno */
+    border-radius: 5px;
+    font-family: Roboto, sans-serif;
+   }
+  
+   mat-label.textLabel {
+    color: #f28500 !important;
+}
+
+.mdc-text-field--filled:not(.mdc-text-field--disabled) .mdc-text-field__input, ::ng-deep .mdc-text-field--filled:not(.mdc-text-field--disabled) .mdc-text-field__input {
+  caret-color: #f28500 !important;
+}
+
+::ng-deep .mdc-text-field--filled  {
+  background-color: #fefefe !important;
+}
+
+::ng-deep .mdc-text-field--filled:not(.mdc-text-field--disabled) .mdc-line-ripple::after {
+  border-bottom-color: #f28500 !important;
+  }
+::ng-deep .mdc-text-field--filled:not(.mdc-text-field--disabled).mdc-text-field--focused .mdc-floating-label, .mdc-text-field--filled:not(.mdc-text-field--disabled).mdc-text-field--focused .mdc-floating-label--float-above{
+color:#f28500 !important;
+}
+
+::ng-deep .mat-mdc-form-field-error {
+  color: #FF2D00 !important;
+}
+
+::ng-deep .mdc-text-field--filled:not(.mdc-text-field--disabled) .mdc-text-field__input {
+  color: #000000 !important;
+}
