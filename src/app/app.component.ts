@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { FormControl } from '@angular/forms';
 
 @Component({
   selector: 'app-root',
@@ -7,5 +6,4 @@ import { FormControl } from '@angular/forms';
   styleUrl: './app.component.css'
 })
 export class AppComponent {
-  public password = new FormControl();
 }

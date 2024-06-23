@@ -8,10 +8,13 @@ import { ValidatorPasswordTooltipModule } from './validator-password-tooltip/val
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
+import { LoginComponent } from './login/login.component';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
@@ -20,6 +23,7 @@ import { provideAnimationsAsync } from '@angular/platform-browser/animations/asy
     ReactiveFormsModule, // add to use FormControl
     MatInputModule, // add to use input from material
     ValidatorPasswordTooltipModule, // directive created
+    HttpClientModule,
     FormsModule
   ],
   providers: [
