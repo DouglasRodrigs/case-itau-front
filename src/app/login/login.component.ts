@@ -3,6 +3,7 @@ import { FormControl } from '@angular/forms';
 import { ValidatepassService } from '../services/validatepass.service';
 import { environment } from '../../environments/environment.development';
 import { HttpHeaders } from '@angular/common/http';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-login',
@@ -17,12 +18,19 @@ export class LoginComponent {
   passValid: boolean = false;
   passInvalidEmpty: boolean = true;
 
-  constructor(apiService: ValidatepassService) {
+  
+
+  constructor(apiService: ValidatepassService, private _snackBar: MatSnackBar) {
     this._apiService = apiService;
+    
   }
+  
 
   getData() {
     if(this.password.value != null) {
+      this.openSnackBar('Senha validada com sucesso!', 'Fechar');
+
+
       const user = {
         'clientId': 'case_itau_app',
         'password': 'user',
@@ -43,7 +51,10 @@ export class LoginComponent {
           this._apiService.postData(environment.apiValidate, this.password.value, header)
           .subscribe(response => {
             this.passInvalid = Boolean(response).valueOf();
-            this.passValid = Boolean(response).valueOf();
+            // this.passValid = Boolean(response).valueOf();
+            if (this.passValid) {
+              this.openSnackBar('Senha validada com sucesso!', 'Fechar');
+            }
             this.passInvalidEmpty = true;
           })
         },
@@ -56,6 +67,11 @@ export class LoginComponent {
     }
 
   }
-
+  openSnackBar(message: string, action: string) {
+    this._snackBar.open(message, action, {
+      duration: 3000, // duração em milissegundos
+    });
+  }
+  
 
 }
