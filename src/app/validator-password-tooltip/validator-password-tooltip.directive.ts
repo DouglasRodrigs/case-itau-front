@@ -7,7 +7,7 @@ import { MatTooltip } from '@angular/material/tooltip';
 })
 export class ValidatorPasswordTooltipDirective extends MatTooltip implements OnInit {
   ngOnInit(): void {
-    super.tooltipClass = 'validator-password-tooltip';
+    super.tooltipClass = 'validator-password-tooltip'; 
   }
 
   @Input()
