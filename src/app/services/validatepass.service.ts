@@ -5,8 +5,8 @@ import { environment } from '../../environments/environment.development';
 
 interface User {
   clientId: string;
-  username: string;
-  password: string;
+  clientSecret: string;
+  scope: string;
   grantType: string;
 }
 
