@@ -24,10 +24,11 @@ export class LoginComponent {
   getData() {
     if(this.password.value != null) {
       const user = {
-        'clientId': 'case_itau_app',
-        'password': 'user',
-        'grantType': 'password',
-        'username': 'user_itau'
+        'clientId': 'teste',
+        'clientSecret': 'JEnsZFQAjjLkjW1Uqrtlz4RtbNZ2P8r8',
+        'grantType': 'client_credentials',
+        'scope': 'test_api_access'
+        
         }
 
       this._apiService.getToken(user).subscribe(
