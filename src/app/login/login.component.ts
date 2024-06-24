@@ -14,7 +14,6 @@ export class LoginComponent {
   public password = new FormControl();
   private _apiService: ValidatepassService
   private token = "";
-  passInvalid: boolean = true;
   passValid: boolean = false;
   passInvalidEmpty: boolean = true;
 
@@ -27,13 +26,10 @@ export class LoginComponent {
   
 
   getData() {
-    if(this.password.value != null) {
-      this.openSnackBar('Senha validada com sucesso!', 'Fechar');
-
-
+    if(this.password.value != null && this.password.value != "") {
       const user = {
-        'clientId': 'teste',
-        'clientSecret': 'JEnsZFQAjjLkjW1Uqrtlz4RtbNZ2P8r8',
+        'clientId': environment.clientId,
+        'clientSecret': environment.clientSecret,
         'grantType': 'client_credentials',
         'scope': 'test_api_access'
         
@@ -51,12 +47,12 @@ export class LoginComponent {
           })
           this._apiService.postData(environment.apiValidate, this.password.value, header)
           .subscribe(response => {
-            this.passInvalid = Boolean(response).valueOf();
-            // this.passValid = Boolean(response).valueOf();
+            this.passValid = Boolean(response).valueOf();
             if (this.passValid) {
               this.openSnackBar('Senha validada com sucesso!', 'Fechar');
+            } else {
+              this.openSnackBar('Senha inválida! Não atende aos requisitos.', 'Fechar');
             }
-            this.passInvalidEmpty = true;
           })
         },
         (error) => {
@@ -64,7 +60,7 @@ export class LoginComponent {
         }
       );
     } else {
-      this.passInvalidEmpty = false;
+      this.openSnackBar('Senha obrigatória!', 'Fechar');
     }
 
   }

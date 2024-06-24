@@ -13,12 +13,6 @@
                 <mat-label class="textLabel">Password</mat-label>
                 <input matInput [formControl]="password" [validatorTooltip]="password.value">
             </mat-form-field>
-            <mat-error class="passValid" name="passValid" *ngIf="!passInvalidEmpty">
-                Senha obrigatória!
-            </mat-error>
-            <mat-error name="passInvalid" *ngIf="!passInvalid">
-                Senha inválida. Não atende aos requisitos.
-            </mat-error>
             <button class="submit" mat-raised-button (click)="getData()">Validar senha</button>
         </div>
     </div>
