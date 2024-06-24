@@ -43,5 +43,5 @@ export class ValidatorPasswordTooltipDirective extends MatTooltip implements OnI
   
   private getTextRoleLimit(showIcon: boolean): string { return `${this.getIcon(showIcon)} - A senha deve ter de 8 a 30 caracteres sem espaços\n` }
   
-  private hasLimit(value: string): boolean { return /^([^\s]){7,20}$/gm.test(value) }
+  private hasLimit(value: string): boolean { return /^([^\s]){8,30}$/gm.test(value) }
 }

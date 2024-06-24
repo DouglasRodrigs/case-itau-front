@@ -15,6 +15,7 @@ export class LoginComponent {
   private token = "";
   passInvalid: boolean = true;
   passValid: boolean = false;
+  passInvalidEmpty: boolean = true;
 
   constructor(apiService: ValidatepassService) {
     this._apiService = apiService;
@@ -22,20 +23,36 @@ export class LoginComponent {
 
   getData() {
     if(this.password.value != null) {
-      this._apiService.getData(environment.apiToken)
-      .subscribe(response => {
-        this.token = response.toString();
-        const header = new HttpHeaders({
-          'Authorization': `Bearer ${this.token}`
-        })
-  
-        this._apiService.postData(environment.apiValidate, this.password.value, header)
-        .subscribe(response => {
-          this.passInvalid = Boolean(response).valueOf();
-          this.passValid = Boolean(response).valueOf();
-          console.log(this.passInvalid)
-        })
-      });
+      const user = {
+        'clientId': 'case_itau_app',
+        'password': 'user',
+        'grantType': 'password',
+        'username': 'user_itau'
+        }
+
+      this._apiService.getToken(user).subscribe(
+        (response) => {
+          try {
+            this.token = JSON.parse(response).access_token;
+          } catch (error) {
+            console.error('Error parsing JSON:', error);
+          }        
+          const header = new HttpHeaders({
+            'Authorization': `Bearer ${this.token}`
+          })
+          this._apiService.postData(environment.apiValidate, this.password.value, header)
+          .subscribe(response => {
+            this.passInvalid = Boolean(response).valueOf();
+            this.passValid = Boolean(response).valueOf();
+            this.passInvalidEmpty = true;
+          })
+        },
+        (error) => {
+          console.error('Erro ao buscar token', error);
+        }
+      );
+    } else {
+      this.passInvalidEmpty = false;
     }
 
   }

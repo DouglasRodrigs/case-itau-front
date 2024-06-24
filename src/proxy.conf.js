@@ -5,7 +5,7 @@ const PROXY_CONFIG = [
             '/validate',
             '/oauth2/authorization/google',
         ],
-        target: "http://localhost:8080/",
+        target: "http://localhost:8081/",
         secure: false,
         changeOrigin: true,
         pathRewrite: {

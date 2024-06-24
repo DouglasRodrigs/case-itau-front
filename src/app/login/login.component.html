@@ -17,6 +17,10 @@
             <mat-error class="passValid" name="passValid" *ngIf="passValid">
                 Senha válida!
             </mat-error>
+
+            <mat-error class="passValid" name="passValid" *ngIf="!passInvalidEmpty">
+                Senha obrigatória!
+            </mat-error>
             <mat-error name="passInvalid" *ngIf="!passInvalid">
                 Senha inválida. Não atende aos requisitos.
             </mat-error>
